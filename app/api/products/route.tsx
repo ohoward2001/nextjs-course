@@ -1,0 +1,25 @@
+import { NextRequest, NextResponse } from "next/server";
+import schema from "./schema";
+import { prisma } from "@/prisma/client";
+
+export async function GET(request: NextRequest) {
+    const products = await prisma.product.findMany();
+    return NextResponse.json(products)
+}
+
+export async function POST(request: NextRequest) {
+    const body = await request.json();
+
+    const res = schema.safeParse(body);
+
+    if (!res.success)
+        return NextResponse.json({error: res.error.errors}, {status: 400})
+
+    const user = await prisma.product.create({
+        data: {
+            name: body.name,
+            price: body.price
+        }
+    })
+    return NextResponse.json(user, {status: 201});
+}
