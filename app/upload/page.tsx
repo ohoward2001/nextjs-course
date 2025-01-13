@@ -8,10 +8,11 @@ interface CloudResult {
 const UploadPage
  = () => {
     
-const [publicId, setPublicId] = useState('');
+// const [publicId, setPublicId] = useState('');
   return (
     <>
-    {publicId && <CldImage src={publicId} width={270} height={180} alt='image'></CldImage>}
+    <h1>Upload Removed</h1>
+    {/* {publicId && <CldImage src={publicId} width={270} height={180} alt='image'></CldImage>}
     <CldUploadWidget 
     options={{
         sources: ['local'],
@@ -26,7 +27,7 @@ const [publicId, setPublicId] = useState('');
         }}>
         {({ open }) => <button className='btn btn-primary'
         onClick={() => open()}>Upload</button>}
-    </CldUploadWidget>
+    </CldUploadWidget> */}
     </>
   )
 }
